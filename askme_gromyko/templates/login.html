@@ -28,6 +28,14 @@
         .page-link:hover {
             color: red;
         }
+
+        #floatingEmail {
+            width: auto;
+        }
+
+        #floatingPassword {
+            width: auto;
+        }
     </style>
 </head>
 
@@ -42,14 +50,10 @@
             </form>
 
             <div class="d-flex justify-content-between gap-3">
-                <div class="border">
-                    <img src="../static/img/avatar.jpg" width="50" height="65">
-                </div>
                 <div class="d-flex flex-column gap-3">
-                    <div>Grisha</div>
                     <div>
-                        <a href="/settings.html">Settings</a>
-                        <a href="/logout.html">Log out</a>
+                        <a href="/login.html">Log In</a>
+                        <a href="/register.html">Register</a>
                     </div>
                 </div>
             </div>
@@ -58,8 +62,9 @@
     </nav>
 
     <main class="container-fluid container-lg mt-3">
+
         <div class="d-flex gap-3 align-items-center">
-            <h1>New Question</h1>
+            <h1>Log In</h1>
         </div>
 
         <div class="row">
@@ -69,26 +74,37 @@
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
-                            <th scope="row" class="col-1">Title</th>
-                            <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                    placeholder="Enter title here"></textarea></td>
+                            <th scope="row" class="col-1">Login</th>
+                            <td><input type="email" class="form-control" id="floatingEmail"
+                                    placeholder="Enter your login here">
+                            </td>
+
                         </tr>
                         <tr>
-                            <th scope="row">Text</th>
-                            <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"
-                                    placeholder="Enter your question here"></textarea></td>
+                            <th scope="row">Password</th>
+                            <td> <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Enter your password here">
+                            </td>
                         </tr>
                         <tr>
-                            <th scope="row">Tags</th>
-                            <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                    placeholder="Enter tags here"></textarea></td>
+                            <th scope="row"></th>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    Answer
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>
+                                <a href="/signup.html">Create New Account</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
 
-                <button type="button" class="btn btn-danger">
-                    Answer
-                </button>
+                
+
 
 
             </div>
@@ -120,6 +136,7 @@
 
             </div>
         </div>
+
 
 
 
