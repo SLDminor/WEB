@@ -1,0 +1,6 @@
+
+1) Заходим в папку: /WEB/ackme_gromyko
+
+2) Активируем окружение: source askme_venv/bin/activate
+
+3) Запускаем сервер: python3 manage.py runserver

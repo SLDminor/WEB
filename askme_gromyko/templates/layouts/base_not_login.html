@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,10 +47,43 @@
         </div>
     </nav>
 
-    <main class="container-fluid container-lg mt-3">
+    <main class="container-fluid container-lg mt-3" style="margin-bottom: 50px;">
 
+        <div class="row">
+            <div class="col-8 g-2">
+                {% block content %}
+                {% endblock %}
+            </div>
+    
+    
+            <div class="col-4">
+                <h3>Popular Tags</h3>
+                <div class="row">
+                    <div class="col">
+                        <span class="badge text-bg-primary">Primary</span>
+                        <span class="badge text-bg-secondary">Secondary</span>
+                        <span class="badge text-bg-success">Success</span>
+                        <span class="badge text-bg-danger">Danger</span>
+                        <span class="badge text-bg-warning">Warning</span>
+                        <span class="badge text-bg-info">Info</span>
+                        <span class="badge text-bg-light">Light</span>
+                        <span class="badge text-bg-dark">Dark</span>
+                    </div>
+                </div>
+                <h3 class="mt-5">Best Members</h3>
+                <div>
+                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 1</a>
+                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 2</a>
+                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 3</a>
+                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 4</a>
+                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 5</a>
+    
+                </div>
+    
+            </div>
+        </div>
     </main>
-
+    
     <footer class="fixed-bottom p-3 bg-light">
         <div class="container">
             <div class="text-center">
@@ -56,7 +91,7 @@
             </div>
         </div>
     </footer>
-
-</body>
-
-</html>
+    
+    </body>
+    
+    </html>
