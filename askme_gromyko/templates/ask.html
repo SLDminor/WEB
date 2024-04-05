@@ -1,69 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layouts/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>AskGromyko</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <style>
-        a {
-            text-decoration: none;
-            /* Убираем подчеркивание */
-            color: rgb(82, 77, 77);
-        }
+{% block content %}
 
-        a:hover {
-            color: red;
-        }
-
-        .navbar-brand {
-            font-size: 36px;
-            font-weight: bold;
-        }
-
-        .page-link{
-            color: black;
-        }
-
-        .page-link:hover {
-            color: red;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="navbar bg-light">
-        <div class="container-fluid container-lg">
-
-            <a class="navbar-brand">AskGromyko</a>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-danger" type="submit">Search</button>
-            </form>
-
-            <div class="d-flex justify-content-between gap-3">
-                <div class="border">
-                    <img src="../static/img/avatar.jpg" width="50" height="65">
-                </div>
-                <div class="d-flex flex-column gap-3">
-                    <div>Grisha</div>
-                    <div>
-                        <a href="/settings.html">Settings</a>
-                        <a href="/logout.html">Log out</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-
-    <main class="container-fluid container-lg mt-3" style="margin-bottom: 50px;">
-        <div class="d-flex gap-3 align-items-center">
-            <h1>New Question</h1>
-        </div>
-
-        <div class="row">
-            <div class="col-8 g-2">
+<div class="d-flex gap-3 align-items-center">
+    <h1>New Question</h1>
+</div>
 
 
                 <table class="table table-borderless">
@@ -91,48 +33,4 @@
                 </button>
 
 
-            </div>
-
-
-            <div class="col-4">
-                <h3>Popular Tags</h3>
-                <div class="row">
-                    <div class="col">
-                        <span class="badge text-bg-primary">Primary</span>
-                        <span class="badge text-bg-secondary">Secondary</span>
-                        <span class="badge text-bg-success">Success</span>
-                        <span class="badge text-bg-danger">Danger</span>
-                        <span class="badge text-bg-warning">Warning</span>
-                        <span class="badge text-bg-info">Info</span>
-                        <span class="badge text-bg-light">Light</span>
-                        <span class="badge text-bg-dark">Dark</span>
-                    </div>
-                </div>
-                <h3 class="mt-5">Best Members</h3>
-                <div>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 1</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 2</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 3</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 4</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 5</a>
-
-                </div>
-
-            </div>
-        </div>
-
-
-
-    </main>
-
-    <footer class="fixed-bottom p-3 bg-light">
-        <div class="container">
-            <div class="text-center">
-                <span class="text-muted">Gromyko & Company</span>
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+{% endblock %}

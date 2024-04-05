@@ -1,165 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layouts/base_not_login.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>AskGromyko</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <style>
-        a {
-            text-decoration: none;
-            /* Убираем подчеркивание */
-            color: rgb(82, 77, 77);
-        }
+{% block content %}
 
-        a:hover {
-            color: red;
-        }
+<div class="d-flex gap-3 align-items-center">
+<h1>Log In</h1>
+</div>
 
-        .navbar-brand {
-            font-size: 36px;
-            font-weight: bold;
-        }
+<div class="alert alert-danger col-3" role="alert">
+Sorry, wrong password!
+</div>
 
-        .page-link{
-            color: black;
-        }
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <th scope="row" class="col-1">Login</th>
+            <td><input type="email" class="form-control" id="floatingEmail"
+                    placeholder="Enter your login here">
+            </td>
 
-        .page-link:hover {
-            color: red;
-        }
-
-        #floatingEmail {
-            width: auto;
-        }
-
-        #floatingPassword {
-            width: auto;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="navbar bg-light">
-        <div class="container-fluid container-lg">
-
-            <a class="navbar-brand">AskGromyko</a>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-danger" type="submit">Search</button>
-            </form>
-
-            <div class="d-flex justify-content-between gap-3">
-                <div class="d-flex flex-column gap-3">
-                    <div>
-                        <a href="/login.html">Log In</a>
-                        <a href="/register.html">Register</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-
-    <main class="container-fluid container-lg mt-3" style="margin-bottom: 50px;">
-
-        <div class="d-flex gap-3 align-items-center">
-            <h1>Log In</h1>
-        </div>
-
-        <div class="alert alert-danger col-3" role="alert">
-            Sorry, wrong password!
-          </div>
-
-        <div class="row">
-            <div class="col-8 g-2">
-
-
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <th scope="row" class="col-1">Login</th>
-                            <td><input type="email" class="form-control" id="floatingEmail"
-                                    placeholder="Enter your login here">
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Password</th>
-                            <td> <input type="password" class="form-control" id="floatingPassword"
-                                    placeholder="Enter your password here">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            <td>
-                                <button type="button" class="btn btn-danger">
-                                    Answer
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            <td>
-                                <a href="/signup.html">Create New Account</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                
+        </tr>
+        <tr>
+            <th scope="row">Password</th>
+            <td> <input type="password" class="form-control" id="floatingPassword"
+                    placeholder="Enter your password here">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <button type="button" class="btn btn-danger">
+                    Log in
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <a href="{% url "signup" %}">Create new account</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 
-            </div>
-
-
-            <div class="col-4">
-                <h3>Popular Tags</h3>
-                <div class="row">
-                    <div class="col">
-                        <span class="badge text-bg-primary">Primary</span>
-                        <span class="badge text-bg-secondary">Secondary</span>
-                        <span class="badge text-bg-success">Success</span>
-                        <span class="badge text-bg-danger">Danger</span>
-                        <span class="badge text-bg-warning">Warning</span>
-                        <span class="badge text-bg-info">Info</span>
-                        <span class="badge text-bg-light">Light</span>
-                        <span class="badge text-bg-dark">Dark</span>
-                    </div>
-                </div>
-                <h3 class="mt-5">Best Members</h3>
-                <div>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 1</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 2</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 3</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 4</a>
-                    <a href="/member.html" class="d-block mt-3">Mr. Gromyko 5</a>
-
-                </div>
-
-            </div>
-        </div>
-
-
-
-
-    </main>
-
-    <footer class="fixed-bottom p-3 bg-light">
-        <div class="container">
-            <div class="text-center">
-                <span class="text-muted">Gromyko & Company</span>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-
-</body>
-
-
-</html>
+{% endblock %}

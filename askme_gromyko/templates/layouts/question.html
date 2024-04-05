@@ -3,8 +3,8 @@
 <article class="card mb-3 w-100">
     <div class="row g-0">
         <div class="col-2 p-2">
-            <div class="border mb-2 w-100" style="height: 100px">
-                <img src="img.jpg" class="img-fluid rounded-start" alt="...">
+            <div class="border mb-2 w-100" style="height: 80px">
+                <img src="{% static "img/red_dinosaur.jpg" %}" class="img-fluid rounded-start" alt="...">
             </div>
 
             <div class="input-group flex-nowrap">
@@ -19,10 +19,10 @@
                 </h5>
                 <p class="card-text">{{ questions.text }}</p>
                 <div class="row">
-                    <a class="col-4" href="/question.html">answer (3)</a>
+                    <a class="col-4" href="{% url "question" questions.id %}">answer (3)</a>
                     <div class="col-8">
                         <span>Tags</span>
-                        <a href="/tag.html">tag</a>
+                        <a href="{% url "blablabla" %}">blablabla</a>
                         <a href="/tag.html">tag</a>
                         <a href="/tag.html">tag</a>
                         <a href="/tag.html">tag</a>

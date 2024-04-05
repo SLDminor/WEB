@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>AskGromyko</title>
-<link rel="stylesheet" href="../static/css/bootstrap.css">
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
 <style>
     a {
         text-decoration: none;
@@ -51,7 +51,7 @@
                 <div>Grisha</div>
                 <div>
                     <a href="/settings.html">Settings</a>
-                    <a href="/logout.html">Log out</a>
+                    <a href="{% url "login" %}">Log Out</a>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
             <h3>Popular Tags</h3>
             <div class="row">
                 <div class="col">
-                    <span class="badge text-bg-primary">Primary</span>
+                    <span class="badge text-bg-primary"><a class="page-link" href="{% url "blablabla" %}">blablabla</a></span>
                     <span class="badge text-bg-secondary">Secondary</span>
                     <span class="badge text-bg-success">Success</span>
                     <span class="badge text-bg-danger">Danger</span>

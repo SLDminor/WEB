@@ -1,0 +1,68 @@
+{% extends "layouts/base_not_login.html" %}
+{% load static %}
+
+{% block content %}
+        <div class="d-flex gap-3 align-items-center">
+            <h1>Registration</h1>
+        </div>
+
+                <div class="alert alert-danger col-6" role="alert">
+                    Sorry, this email address allready registred!
+                </div>
+
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="col-1">Login</th>
+                            <td><input type="email" class="form-control" id="floatingEmail"
+                                    placeholder="Enter your login here">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td> <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Enter your email here">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">NickName</th>
+                            <td> <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Enter your nickname here">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Password</th>
+                            <td> <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Enter your password here">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Repeat password</th>
+                            <td> <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Repeat your password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Upload avatar</th>
+                            <td>
+                                <div class="col-md-6">
+                                    <input type="file" class="form-control" id="inputGroupFile04"
+                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                </div>
+                                
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    Register!
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+{% endblock %}
