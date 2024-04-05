@@ -46,6 +46,9 @@ def login(request):
 def signup(request):
     return render(request, template_name="signup.html")
 
+def settings(request):
+    return render(request, template_name="settings.html")
+
 def tag(request):
     page_num = request.GET.get('page', 1)
     try:
