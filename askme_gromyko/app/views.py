@@ -1,23 +1,8 @@
 from django.http import Http404
 from django.shortcuts import render
-from app import views
 from django.core.paginator import Paginator
+from app.models import Tag, Question, Answer
 
-QUESTIONS = [
-    {
-        "id": i,
-        "title": f"Question {i}",
-        "text": f"This is question number {i}"
-    } for i in range(200)
-]
-
-ANSWERS = [
-{
-    "id": i,
-    "title": f"Answer {i}",
-    "text": f"This is answer number {i}"
-} for i in range(3)
-]
 
 def index(request):
     page_num = request.GET.get('page', 1)
@@ -26,16 +11,33 @@ def index(request):
     except ValueError:
         raise Http404("Page number is not valid.")
 
-    paginator = Paginator(QUESTIONS, per_page = 5)
+    paginator = Paginator(Question.objects.sorted_by_created_at(), per_page = 5)
     page_obj = paginator.page(page_num)
-    return render(request, template_name="index.html", context= {"questions": page_obj})
+    global_tags = Tag.objects.sort_by_related_question_quantity()[:9]
+    
+    return render(request, template_name="index.html", context = {'page_obj': page_obj, 'global_tags': global_tags,})
 
 def hot(request):
-    return render(request, template_name="hot.html", context= {"questions": QUESTIONS})
+    page_num = request.GET.get('page', 1)
+    try:
+        page_num = int(page_num)
+    except ValueError:
+        raise Http404("Page number is not valid.")
+
+    paginator = Paginator(Question.objects.sorted_by_rating(), per_page = 5)
+    page_obj = paginator.page(page_num)
+    global_tags = Tag.objects.sort_by_related_question_quantity()[:9]
+    
+    return render(request, template_name="hot.html", context = {'page_obj': page_obj, 'global_tags': global_tags,})
 
 def question(request, question_id):
-    item = QUESTIONS[question_id]
-    return render (request, template_name='one_question.html', context={'questions': item, 'answers': ANSWERS})
+    question = Question.objects.get(pk=question_id)
+    answers = Answer.objects.filter(question_id=question_id)
+    global_tags = Tag.objects.sort_by_related_question_quantity()[:9]
+
+    return render (request, template_name='one_question.html', context = {'question': question,
+                                                                          'global_tags': global_tags,
+                                                                          'answers': answers})
 
 def ask(request):
     return render(request, template_name="ask.html")
@@ -49,13 +51,17 @@ def signup(request):
 def settings(request):
     return render(request, template_name="settings.html")
 
-def tag(request):
-    page_num = request.GET.get('page', 1)
+def tag(request, title):
     try:
-        page_num = int(page_num)
+        page_title = str(title)
     except ValueError:
-        raise Http404("Page number is not valid.")
+        raise Http404("Page title is not valid.")
+    page_obj = Question.objects.filter_by_tag(page_title)
+    global_tags = Tag.objects.sort_by_related_question_quantity()[:9]
+    tag = Tag.objects.get(title=title)
 
-    paginator = Paginator(QUESTIONS, per_page = 5)
-    page_obj = paginator.page(page_num)
-    return render(request, template_name="tag_blablabla.html", context= {"questions": page_obj})
+    return render(request, template_name='show_tag.html', context={
+        'page_obj': page_obj,
+        'global_tags': global_tags,
+        'tag': tag,
+    })

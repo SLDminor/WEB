@@ -10,12 +10,55 @@
     <div class="col-8 g-2">
 
 
-        {% include "layouts/question.html"%}
+        <article class="card mb-3 w-100">
+            <div class="row g-0">
+                <div class="col-2 p-2">
+                    <div class="border mb-2">
+                        <img src="{% static "img/red_dinosaur.jpg" %}" class="img-fluid rounded-start" alt="user-avatar">
+                    </div>
+        
+        
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{% url "question" question.id %}">{{ question.title }}</a>
+                        </h5>
+                        <hr>   
+                        <p class="card-text">{{ question.body|truncatechars:200 }}</p>
+                        <div class="row mb-4"> </div>
+                        <div class="row">
+                            <a class="col-3" href="{% url "question" question.id %}">Answer ({{ question.answer_set.count }})</a>
+                            <div class="col-5">
+                                
+                                <ul class="list-group list-group-horizontal">
+                                    <span>Tags</span>
+                                      <div class="list-group">
+                                        {% for tags in global_tags %}
+                                        <span class="badge"><a href="{% url 'show_tag' tags.title %}">{{ tags.title }}</a></span>
+                                          {% cycle "" "" "</div><div class='list-group'>" %}
+                                        {% endfor %}
+                                      </div>
+                                      
+                                </ul>
+                            </div>
+                            <div class="question-rating">
+                                <div class="btn-group" role="group" aria-label="Vertical button group">
+                                  <button type="button" class="btn btn-outline-secondary"><img src="{% static "svg/like.svg" %}" alt="down-vote"/></button>
+                                  <button type="button" class="btn btn-outline-secondary disabled">{{ question.get_rating }}</button>
+                                  <button type="button" class="btn btn-outline-secondary"><img src="{% static "svg/dislike.svg" %}" alt="down-vote"/></button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
 
         <hr>
 
-        {% for answers in answers %}
-            {% include "layouts/answer.html"%}
+        {% for temp_answer in answers %}
+            {% include "layouts/answer.html" %}
         {% endfor %}
 
         <div class="border-top"></div>
@@ -28,11 +71,9 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                 placeholder="Enter your answer here"></textarea>
         </div>
-        <button type="button" class="btn btn-danger">
+        <button type="button" class="btn btn-danger mb-5">
             Answer
         </button>
-
-        {% include "layouts/pagination.html" with page_obj=questions%}
 
     </div>
 

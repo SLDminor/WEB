@@ -10,15 +10,12 @@
 
 <div class="col-8 g-2">
     
-    {% for questions in questions %}
-
-        {% include "layouts/question.html" %}
-        
+    {% for question in page_obj %}
+        {% include 'layouts/question.html' with question=question %}
     {% endfor %}
 
+    {% include "layouts/pagination.html" with page_obj=page_obj%}
 
-    {% include "layouts/pagination.html" with page_obj=questions%}
-    
 </div>
 
 {% endblock %}

@@ -1,28 +1,45 @@
-{% load static %}
+    {% load static %}
 
-<article class="card mt-3 mb-3 w-100">
-    <div class="row g-0">
-        <div class="col-2 p-2">
-            <div class="border mb-2 w-100" style="height: 80px">
-                <img src="{% static "img/red_cat.jpg" %}" class="img-fluid rounded-start" alt="...">
+    <article class="card mt-3 mb-3 w-100">
+        <div class="row g-0">
+            <div class="col-2 p-2">
+                <div class="border mb-2 w-100" style="height: 80px">
+                    <img src="{% static "img/red_cat.jpg" %}" class="img-fluid rounded-start" alt="...">
+                </div>
+
+                
+
             </div>
+            <div class="col">
+                <div class="card-body">
+                    <p class="card-text mt-3">{{ temp_answer.body}}</p>
+                    
+                    <div class="row mt-3">
+                        <div class="col-4">
+                            <div class="answer-rating">
+                            <div class="btn-group" role="group" aria-label="Vertical button group">
+                            <button type="button" class="btn btn-outline-secondary"><img src="{% static "svg/like.svg" %}" alt="down-vote"/></button>
+                            <button type="button" class="btn btn-outline-secondary disabled">{{ temp_answer.get_rating }}</button>
+                            <button type="button" class="btn btn-outline-secondary"><img src="{% static "svg/dislike.svg" %}" alt="down-vote"/></button>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Correct!
+                                </label>
+                            </div>
+                        </div>
+                        
 
-            <div class="input-group flex-nowrap">
-                <input type="number" value="5" class="form-control">
-            </div>
+                        
+                    </div>
 
-        </div>
-        <div class="col">
-            <div class="card-body">
-                <p class="card-text mt-3">This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer.</p>
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Correct!
-                    </label>
+                    
+                
                 </div>
             </div>
         </div>
-    </div>
-</article>
+    </article>

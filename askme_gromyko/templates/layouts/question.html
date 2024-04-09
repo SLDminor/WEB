@@ -3,32 +3,42 @@
 <article class="card mb-3 w-100">
     <div class="row g-0">
         <div class="col-2 p-2">
-            <div class="border mb-2 w-100" style="height: 80px">
-                <img src="{% static "img/red_dinosaur.jpg" %}" class="img-fluid rounded-start" alt="...">
+            <div class="border mb-2">
+                <img src="{% static "img/red_dinosaur.jpg" %}" class="img-fluid rounded-start" alt="user-avatar">
             </div>
 
-            <div class="input-group flex-nowrap">
-                <input type="number" value="5" class="form-control">
-            </div>
 
         </div>
         <div class="col">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="{% url "question" questions.id %}">{{ questions.title }}</a>
+                    <a href="{% url "question" question.id %}">{{ question.title }}</a>
                 </h5>
-                <p class="card-text">{{ questions.text }}</p>
+                <hr>   
+                <p class="card-text">{{ question.body|truncatechars:200 }}</p>
+                <div class="row mb-4"> </div>
                 <div class="row">
-                    <a class="col-4" href="{% url "question" questions.id %}">answer (3)</a>
-                    <div class="col-8">
-                        <span>Tags</span>
-                        <a href="{% url "blablabla" %}">blablabla</a>
-                        <a href="/tag.html">tag</a>
-                        <a href="/tag.html">tag</a>
-                        <a href="/tag.html">tag</a>
-                        <a href="/tag.html">tag</a>
-                        <a href="/tag.html">tag</a>
+                    <a class="col-3" href="{% url "question" question.id %}">Answer ({{ question.answer_set.count }})</a>
+                    <div class="col-5">
+                        
+                        <ul class="list-group list-group-horizontal">
+                            <span>Tags</span>
+                              <div class="list-group">
+                                {% for tags in global_tags %}
+                                <span class="badge"><a href="{% url 'show_tag' tags.title %}">{{ tags.title }}</a></span>
+                                  {% cycle "" "" "</div><div class='list-group'>" %}
+                                {% endfor %}
+                              </div>
+                              
+                        </ul>
                     </div>
+                    <div class="question-rating">
+                        <div class="btn-group" role="group" aria-label="Vertical button group">
+                          <button type="button" class="btn btn-outline-secondary"><img src="{% static "svg/like.svg" %}" alt="down-vote"/></button>
+                          <button type="button" class="btn btn-outline-secondary disabled">{{ question.get_rating }}</button>
+                          <button type="button" class="btn btn-outline-secondary"><img src="{% static "svg/dislike.svg" %}" alt="down-vote"/></button>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>
