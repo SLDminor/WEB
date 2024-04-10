@@ -28,9 +28,10 @@ class Command(BaseCommand):
     def _fill_profiles(self, num_profiles):
         print(f'Creating {num_profiles} profiles...')
         users = []
-        for _ in range(num_profiles):
+        for i in range(num_profiles):
             person = Person(Locale.EN)
-            user = User.objects.create_user(username=person.username(),
+            username = f"{person.username()}{i}"
+            user = User.objects.create_user(username=username,
                                             email=person.email(),
                                             password=person.password())
             profile = Profile(user=user)
@@ -51,11 +52,14 @@ class Command(BaseCommand):
         users = list(User.objects.all())
         random.shuffle(users)
         questions = []
+        tags = list(Tag.objects.all())
         for _ in range(num_questions):
             txt = Text(Locale.EN)
             q = Question(title=txt.quote(),
-                         body=txt.text(30),
+                         body=txt.text(20),
                          author=random.choice(users))
+            q.save()
+            q.tags.set(random.sample(tags, random.randint(1, 9)))
             questions.append(q)
         Question.objects.bulk_create(questions, ignore_conflicts=True)
 
@@ -69,7 +73,7 @@ class Command(BaseCommand):
             answers = []
             for _ in range(num_answers // n):
                 txt = Text(Locale.EN)
-                a = Answer(body=txt.text(30),
+                a = Answer(body=txt.text(20),
                            author=random.choice(users),
                            question=random.choice(questions),
                            is_correct=False)

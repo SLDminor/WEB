@@ -20,11 +20,10 @@
                 <div class="row">
                     <a class="col-3" href="{% url "question" question.id %}">Answer ({{ question.answer_set.count }})</a>
                     <div class="col-5">
-                        
                         <ul class="list-group list-group-horizontal">
                             <span>Tags</span>
                               <div class="list-group">
-                                {% for tags in global_tags %}
+                                {% for tags in question.tags.all %}
                                 <span class="badge"><a href="{% url 'show_tag' tags.title %}">{{ tags.title }}</a></span>
                                   {% cycle "" "" "</div><div class='list-group'>" %}
                                 {% endfor %}
